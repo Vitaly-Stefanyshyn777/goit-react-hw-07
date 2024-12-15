@@ -18,12 +18,12 @@ export default {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    "react/react-in-jsx-scope": "off", // Не потрібний для React 17+
+    "react/react-in-jsx-scope": "off", 
     "semi": ["error", "always"],
   },
   settings: {
     react: {
-      version: "detect", // Автоматичне визначення версії React
+      version: "detect", 
     },
   },
 };
