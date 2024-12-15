@@ -1,29 +1,21 @@
-import React, { memo } from "react";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
-import s from "./Contact.module.css";
+import { useDispatch } from 'react-redux';
+import s from './Contact.module.css';
+import { deleteContact } from '../../redux/contactsOps';
 
 const Contact = ({ user }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContactUser = () => {
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete contact ${user.name}?`
-    );
-    if (confirmDelete) {
-      dispatch(deleteContact(user.id));
-    }
+    dispatch(deleteContact(user.id));
   };
 
   return (
-    <div className={s.contactCard}>
-      <div className={s.contactInfo}>
+    <>
+      <div>
         <p className={s.contactText}>
-          <strong>Name:</strong> {user.name}
+          Name: {user.name.charAt(0).toUpperCase() + user.name.slice(1)}
         </p>
-        <p className={s.contactText}>
-          <strong>Phone:</strong> {user.number}
-        </p>
+        <p className={s.contactText}>Phone: {user.number}</p>
       </div>
       <button
         className={s.contactBtn}
@@ -32,8 +24,7 @@ const Contact = ({ user }) => {
       >
         Delete
       </button>
-    </div>
+    </>
   );
 };
-
-export default memo(Contact);
+export default Contact;

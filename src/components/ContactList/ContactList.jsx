@@ -15,7 +15,7 @@ const ContactList = () => {
         </li>
       ))}
     </ul>
-  ) : null; // Нічого не відображається, якщо список порожній
+  ) : null; 
 };
 
 export default React.memo(ContactList);

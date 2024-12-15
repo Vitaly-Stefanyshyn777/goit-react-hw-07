@@ -1,9 +1,8 @@
-import React from "react";
+import "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsOps";
 import s from "./ContactForm.module.css";
 
 const validationSchema = Yup.object({
@@ -20,10 +19,8 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleFormSubmit = (values, { resetForm }) => {
-
     dispatch(
       addContact({
-        id: nanoid(),
         name: values.name.trim(),
         number: values.number.trim(),
       })
@@ -34,16 +31,16 @@ const ContactForm = () => {
   return (
     <Formik
       initialValues={{ name: "", number: "" }}
-      onSubmit={handleFormSubmit}
       validationSchema={validationSchema}
+      onSubmit={handleFormSubmit}
     >
       <Form className={s.contactForm}>
         <label htmlFor="name" className={s.label}>
           Name
           <Field
             id="name"
-            className={s.formInput}
             name="name"
+            className={s.formInput}
             placeholder="Enter name"
           />
           <ErrorMessage name="name" component="p" className={s.inputError} />
@@ -53,14 +50,14 @@ const ContactForm = () => {
           Phone Number
           <Field
             id="number"
-            className={s.formInput}
             name="number"
+            className={s.formInput}
             placeholder="Enter phone number"
           />
           <ErrorMessage name="number" component="p" className={s.inputError} />
         </label>
 
-        <button className={s.formBtn} type="submit">
+        <button type="submit" className={s.formBtn}>
           Add Contact
         </button>
       </Form>
